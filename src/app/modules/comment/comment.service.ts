@@ -8,7 +8,7 @@ const createCommentIntoDB = async (comment: TComment) => {
 const getAllCommentFromDB = async () => {
   const result = await Comment.find().populate({
     path: "createdBy",
-    select: "_id username email role",
+    select: "_id name email role",
   });
   return {
     categories: result,

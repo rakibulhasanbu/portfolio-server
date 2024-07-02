@@ -7,11 +7,9 @@ import jwt, { JwtPayload } from "jsonwebtoken";
 
 const loginUserIntoDB = async (payload: TLogIn) => {
   //checking if the user is exists
-  const user = await User.findOne({ username: payload.username }).select(
-    "+password",
-  );
+  const user = await User.findOne({ email: payload.email }).select("+password");
   if (!user) {
-    throw new AppError(404, `${payload.username} user not found!`);
+    throw new AppError(404, `${payload.email} user not found!`);
   }
   //checking if the password is matched
   const isPasswordMatched = await bcrypt.compare(
@@ -33,7 +31,7 @@ const loginUserIntoDB = async (payload: TLogIn) => {
   return {
     user: {
       _id: user._id,
-      username: user.username,
+      name: user.name,
       email: user.email,
       role: user.role,
     },

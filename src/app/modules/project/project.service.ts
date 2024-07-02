@@ -82,7 +82,7 @@ const getAllProject = async (query: Record<string, unknown>) => {
 const getSingleProjectById = async (projectId: string) => {
   return await Project.findById(projectId).populate({
     path: "createdBy",
-    select: "_id username email role",
+    select: "_id name email role",
   });
 };
 
@@ -106,7 +106,7 @@ const updateProject = async (id: string, payload: Partial<TProject>) => {
     runValidators: true,
   }).populate({
     path: "createdBy",
-    select: "_id username email role",
+    select: "_id name email role",
   });
 };
 

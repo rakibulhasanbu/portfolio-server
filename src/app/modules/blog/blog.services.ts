@@ -4,7 +4,7 @@ import Blog from "./blog.model";
 const createBlogIntoDB = async (blogData: TBlog) => {
   return (await Blog.create(blogData)).populate({
     path: "createdBy",
-    select: "_id username email role",
+    select: "_id name email role",
   });
 };
 
@@ -26,7 +26,7 @@ const highestBlogs = async () => {
 const getBlogByCourseID = async (courseId: string) => {
   return await Blog.find({ courseId }).populate({
     path: "createdBy",
-    select: "_id username email role",
+    select: "_id name email role",
   });
 };
 export const blogService = {
