@@ -4,10 +4,10 @@ import app from "./app/app";
 
 async function main() {
   try {
-    await mongoose.connect(config.database_url as string);
-    app.listen(config.port, () => {
+    await mongoose.connect(config?.database_url as string);
+    app.listen(config?.port, () => {
       console.log(
-        `Rakibul Hasan portfolio app is listening on port ${config.port}`,
+        `Rakibul Hasan portfolio app is listening on port ${config?.port}`,
       );
     });
   } catch (error) {

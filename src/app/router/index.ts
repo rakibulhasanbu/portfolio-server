@@ -1,24 +1,24 @@
 import { Router } from "express";
-import reviewRouter from "../modules/blog/blog.router";
-import courseRouter from "../modules/project/project.router";
-import categoryRoute from "../modules/comment/comment.route";
 import userRoute from "../modules/user/user.route";
 import authRoute from "../modules/auth/auth.route";
+import projectRouter from "../modules/project/project.router";
+import commentRoute from "../modules/comment/comment.route";
+import blogRouter from "../modules/blog/blog.router";
 
 const router = Router();
 
 const moduleRoutes = [
   {
     path: "/",
-    route: reviewRouter,
+    route: projectRouter,
   },
   {
     path: "/",
-    route: courseRouter,
+    route: commentRoute,
   },
   {
     path: "/",
-    route: categoryRoute,
+    route: blogRouter,
   },
   {
     path: "/auth",
